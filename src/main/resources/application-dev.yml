@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://my_mariadb:3306/employees
+    username: username
+    password: password
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      initialization-fail-timeout: 0
+      connection-timeout: 30000
+      max-lifetime: 600000 # 10 min
+      idle-timeout: 300000 # 5 min
+      keepalive-time: 300000 # prevent idle kill
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect # don't know why but i had to add this for the server connection
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+    hibernate:
+      ddl-auto: update
+    show-sql: false
